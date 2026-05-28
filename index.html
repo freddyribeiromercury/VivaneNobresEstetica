@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOBRES Estética Avançada — Valbom, Gondomar</title>
+<meta name="description" content="NOBRES Estética Avançada — Tratamentos estéticos avançados com tecnologia de ponta em Valbom, Gondomar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ─── RESET & ROOT ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --g:   #293F2B;
+  --g2:  #1A2E1C;
+  --gs:  #6a7564;
+  --be:  #C8B89A;
+  --au:  #C9A84C;
+  --aul: #E2C278;
+  --cr:  #F7F0E6;
+  --cv:  #EDE4D8;
+  --cvd: #D9CEBC;
+  --wh:  #FDFAF6;
+  --tx:  #1C1A17;
+  --txm: #3D3A34;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans:  'Raleway', sans-serif;
+  --r: 20px;
+  --rL: 32px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--wh);
+  color: var(--tx);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+
+/* ─── CUSTOM CURSOR ─── */
+.cursor {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--au);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .2s, height .2s, opacity .2s;
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(201,168,76,.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform .08s linear, width .25s, height .25s, border-color .25s;
+}
+body:has(a:hover) .cursor, body:has(button:hover) .cursor { width: 6px; height: 6px; }
+body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
+  width: 52px; height: 52px;
+  border-color: rgba(201,168,76,.7);
+}
+@media (hover: none) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
+
+/* ─── GRAIN OVERLAY ─── */
+.grain-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: .028;
+  pointer-events: none;
+  z-index: 9000;
+  animation: grain-drift 8s steps(10) infinite;
+}
+@keyframes grain-drift {
+  0%,100% { transform: translate(0,0); }
+  10% { transform: translate(-2%,-3%); }
+  20% { transform: translate(3%,1%); }
+  30% { transform: translate(-1%,2%); }
+  40% { transform: translate(2%,-2%); }
+  50% { transform: translate(-3%,3%); }
+  60% { transform: translate(1%,-1%); }
+  70% { transform: translate(-2%,2%); }
+  80% { transform: translate(3%,-3%); }
+  90% { transform: translate(-1%,1%); }
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cv); }
+::-webkit-scrollbar-thumb { background: var(--gs); border-radius: 3px; }
+
+/* ─── UTILITY ─── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .container { padding: 0 24px; } }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: .6rem; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--au);
+  margin-bottom: 20px;
+}
+.tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--au); }
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: .65rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
+  padding: 15px 36px; border-radius: 2px; cursor: pointer;
+  transition: all .3s cubic-bezier(.25,.46,.45,.94);
+  border: 1.5px solid transparent; white-space: nowrap;
+}
+.btn-solid { background: var(--g); color: var(--cr); border-color: var(--g); }
+.btn-solid:hover { background: var(--g2); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(26,46,28,.25); }
+.btn-gold { background: var(--au); color: var(--g2); border-color: var(--au); }
+.btn-gold:hover { background: var(--aul); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(201,168,76,.3); }
+.btn-ghost-dark {
+  font-family: var(--sans); font-size: .62rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
+  color: var(--g); background: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: gap .3s; padding: 0;
+}
+.btn-ghost-dark::after { content: '→'; }
+.btn-ghost-dark:hover { gap: 14px; }
+.btn-ghost-light {
+  font-family: var(--sans); font-size: .62rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
+  color: var(--cr); background: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: gap .3s, color .3s; padding: 0;
+}
+.btn-ghost-light::after { content: '→'; }
+.btn-ghost-light:hover { gap: 14px; color: var(--aul); }
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════ */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  height: 76px; display: flex; align-items: center;
+  transition: background .5s ease, box-shadow .5s ease;
+}
+#nav.scrolled {
+  background: rgba(253,250,246,.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--cvd);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo img { height: 44px; width: auto; display: block; transition: opacity .3s; }
+.nav-logo img:hover { opacity: .8; }
+.nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+.nav-links a {
+  font-family: var(--sans); font-size: .62rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase; text-decoration: none;
+  color: rgba(28,26,23,.5); transition: color .3s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--au); transition: width .3s;
+}
+.nav-links a:hover { color: var(--tx); }
+.nav-links a:hover::after { width: 100%; }
+#nav:not(.scrolled) .nav-links a { color: rgba(247,240,230,.65); }
+#nav:not(.scrolled) .nav-links a:hover { color: var(--cr); }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cr); transition: all .3s; transform-origin: center; }
+#nav.scrolled .hamburger span { background: var(--tx); }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Full-screen overlay menu */
+.overlay-menu {
+  position: fixed; inset: 0; z-index: 490;
+  background: var(--g2);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .5s ease;
+}
+.overlay-menu.open { opacity: 1; pointer-events: all; }
+.overlay-menu ul { list-style: none; text-align: center; }
+.overlay-menu ul li { overflow: hidden; margin-bottom: 12px; }
+.overlay-menu ul li a {
+  font-family: var(--serif); font-size: clamp(2.5rem,7vw,5rem); font-weight: 300;
+  color: var(--cr); text-decoration: none;
+  display: block; transform: translateY(100%);
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94), color .3s;
+  line-height: 1.2;
+}
+.overlay-menu.open ul li a { transform: translateY(0); }
+.overlay-menu ul li:nth-child(1) a { transition-delay: .05s; }
+.overlay-menu ul li:nth-child(2) a { transition-delay: .1s; }
+.overlay-menu ul li:nth-child(3) a { transition-delay: .15s; }
+.overlay-menu ul li:nth-child(4) a { transition-delay: .2s; }
+.overlay-menu ul li:nth-child(5) a { transition-delay: .25s; }
+.overlay-menu ul li a:hover { color: var(--au); }
+.overlay-contact {
+  position: absolute; bottom: 48px; left: 0; right: 0;
+  text-align: center;
+}
+.overlay-contact a {
+  font-family: var(--sans); font-size: .7rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(200,184,154,.5); text-decoration: none;
+  transition: color .3s;
+}
+.overlay-contact a:hover { color: var(--au); }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-right .btn { display: none; }
+  .hamburger { display: flex; }
+  .nav-inner { padding: 0 24px; }
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero {
+  position: relative; min-height: 100vh;
+  overflow: hidden;
+  display: grid; grid-template-columns: 1fr 2fr;
+  background: var(--gs);
+}
+.hero-video-col {
+  position: relative; overflow: hidden;
+}
+.hero-bg-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; pointer-events: none;
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, var(--gs) 0%, transparent 22%);
+}
+
+/* Left column */
+.hero-left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 48px 80px 80px;
+  background: var(--gs);
+}
+.hero-num {
+  font-family: var(--serif); font-size: clamp(16rem,22vw,26rem);
+  font-weight: 300; line-height: .85; color: rgba(255,255,255,.1);
+  position: absolute; top: 0; left: -20px; pointer-events: none;
+  user-select: none; letter-spacing: -.04em;
+}
+.hero-kicker {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--sans); font-size: .58rem; font-weight: 600;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--au); margin-bottom: 20px;
+  animation: h-rise .8s ease both;
+}
+.hero-kicker-line { width: 36px; height: 1px; background: var(--au); }
+.hero-title {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.4rem,3.6vw,4.2rem); line-height: 1.06;
+  color: var(--cr); margin-bottom: 20px;
+  animation: h-rise .8s .12s ease both;
+}
+.hero-title em { font-style: italic; color: var(--aul); }
+.hero-subtitle {
+  font-family: var(--sans); font-size: .75rem; font-weight: 400;
+  line-height: 1.8; color: rgba(200,184,154,.65);
+  max-width: 340px; margin-bottom: 32px;
+  animation: h-rise .8s .24s ease both;
+}
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: h-rise .8s .36s ease both;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2);
+  border-radius: 40px; padding: 8px 16px;
+  font-family: var(--sans); font-size: .6rem; font-weight: 500;
+  letter-spacing: .1em; color: var(--aul);
+  margin-top: 20px;
+  animation: h-rise .8s .48s ease both;
+}
+.hero-badge .stars { color: var(--au); letter-spacing: 2px; }
+
+/* Right column — image */
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-img {
+  position: absolute; bottom: 0; left: 0;
+  width: 100%; height: auto;
+  display: block;
+}
+.hero-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--g2) 0%, rgba(26,46,28,.3) 40%, transparent 70%);
+}
+/* Organic arc shape on left edge of image */
+.hero-arc {
+  position: absolute; left: -1px; top: 0; bottom: 0;
+  width: 80px;
+}
+.hero-scroll-hint {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; z-index: 3;
+  font-family: var(--sans); font-size: .55rem; font-weight: 600;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(200,184,154,.3);
+  animation: h-rise .8s .6s ease both;
+}
+.hero-scroll-bar {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, rgba(201,168,76,.5), transparent);
+  animation: scroll-extend 2s ease-in-out infinite;
+}
+@keyframes scroll-extend {
+  0%,100% { transform: scaleY(1); opacity: .5; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+}
+@keyframes h-rise {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  #hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+  }
+  .hero-left {
+    padding: 88px 28px 0;
+    order: 1;
+    background: var(--gs);
+    justify-content: flex-start;
+    position: static;
+  }
+  .hero-subtitle {
+    position: absolute;
+    bottom: 108px; left: 28px; right: 28px;
+    z-index: 5;
+    margin-bottom: 0;
+    color: rgba(247,240,230,.82);
+    font-size: .7rem;
+  }
+  .hero-actions {
+    position: absolute;
+    bottom: 36px; left: 28px; right: 28px;
+    z-index: 5;
+    margin-top: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .hero-video-col {
+    order: 2;
+    height: 100%;
+  }
+  .hero-bg-video { object-position: center center; }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      var(--gs) 0%,
+      rgba(107,124,95,.45) 10%,
+      transparent 28%,
+      transparent 55%,
+      rgba(26,46,28,.5) 85%,
+      rgba(26,46,28,.75) 100%
+    );
+  }
+  .hero-num { font-size: 36vw; }
+  .hero-scroll-hint { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   MARQUEE STRIP
+═══════════════════════════════════════ */
+.marquee-strip {
+  background: var(--au);
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee-scroll 24s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: flex; align-items: center; gap: 28px;
+  white-space: nowrap; padding: 0 28px;
+  font-family: var(--sans); font-size: .6rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--g2);
+}
+.marquee-dot { width: 4px; height: 4px; background: var(--g2); border-radius: 50%; opacity: .5; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════
+   STATS
+═══════════════════════════════════════ */
+#stats {
+  background: var(--wh);
+  border-bottom: 1px solid var(--cvd);
+  padding: 56px 0;
+}
+.stats-row {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+}
+.stat-block {
+  flex: 1; text-align: center; padding: 0 40px;
+  position: relative;
+}
+.stat-block + .stat-block::before {
+  content: ''; position: absolute; left: 0; top: 10%; bottom: 10%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--be) 50%, transparent);
+}
+.stat-value {
+  font-family: var(--serif); font-size: 3.4rem; font-weight: 300;
+  color: var(--g); line-height: 1;
+}
+.stat-value span { color: var(--au); }
+.stat-desc {
+  font-family: var(--sans); font-size: .58rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gs); margin-top: 6px;
+}
+@media (max-width: 560px) {
+  .stats-row { flex-direction: column; gap: 36px; }
+  .stat-block + .stat-block::before { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   ABOUT — Editorial 2-col
+═══════════════════════════════════════ */
+#sobre {
+  padding: 140px 0;
+  background: var(--cv);
+  position: relative; overflow: hidden;
+}
+/* Big background letter */
+#sobre::before {
+  content: 'N';
+  position: absolute; right: -40px; bottom: -80px;
+  font-family: var(--serif); font-size: 36rem; font-weight: 300;
+  color: rgba(107,124,95,.05); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.about-layout {
+  display: grid; grid-template-columns: 5fr 7fr;
+  gap: 80px; align-items: start;
+}
+.about-photo-col { position: relative; }
+.about-photo-frame {
+  position: relative;
+  /* Arch/organic top */
+  clip-path: ellipse(100% 80% at 50% 80%);
+  overflow: hidden;
+  border-radius: 200px 200px 24px 24px;
+}
+.about-photo-frame img {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+.about-photo-tag {
+  position: absolute; bottom: -20px; right: -24px;
+  background: var(--g); color: var(--cr);
+  padding: 20px 24px; border-radius: var(--r);
+  text-align: center; z-index: 1;
+}
+.about-photo-tag .num {
+  font-family: var(--serif); font-size: 2rem; font-weight: 300;
+  color: var(--au); line-height: 1;
+}
+.about-photo-tag .lbl {
+  font-family: var(--sans); font-size: .55rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(200,184,154,.6); margin-top: 4px;
+}
+/* Floating gold pill */
+.about-photo-pill {
+  position: absolute; top: 48px; left: -32px;
+  background: var(--au); border-radius: 40px;
+  padding: 10px 18px;
+  font-family: var(--sans); font-size: .58rem; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--g2); white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(201,168,76,.3);
+  z-index: 1;
+}
+.about-text-col {}
+.about-text-col .tag { margin-bottom: 16px; }
+.about-eyebrow {
+  font-family: var(--serif); font-size: clamp(2.8rem,4vw,4.2rem);
+  font-weight: 300; color: var(--g); line-height: 1.1;
+  margin-bottom: 32px;
+}
+.about-eyebrow em { font-style: italic; color: var(--gs); }
+.about-pull-quote {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+  font-style: italic; color: var(--g);
+  border-left: 2px solid var(--au); padding-left: 20px;
+  margin-bottom: 28px; line-height: 1.7;
+}
+.about-body {
+  font-family: var(--sans); font-size: .78rem; font-weight: 400;
+  line-height: 1.95; color: var(--txm); margin-bottom: 44px;
+}
+.about-values { display: flex; flex-direction: column; gap: 0; }
+.value-row {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 20px 0; border-bottom: 1px solid var(--cvd);
+}
+.value-row:first-child { border-top: 1px solid var(--cvd); }
+.value-idx {
+  font-family: var(--serif); font-size: .85rem; font-weight: 300;
+  color: var(--au); min-width: 28px; padding-top: 2px;
+}
+.value-row h4 {
+  font-family: var(--serif); font-size: 1rem; font-weight: 500;
+  color: var(--g); margin-bottom: 3px;
+}
+.value-row p {
+  font-family: var(--sans); font-size: .68rem;
+  color: var(--gs); line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .about-layout { grid-template-columns: 1fr; gap: 56px; }
+  .about-photo-frame { border-radius: 120px 120px 20px 20px; max-width: 400px; margin: 0 auto; }
+  .about-photo-pill { left: 0; top: 32px; }
+}
+
+/* ═══════════════════════════════════════
+   SERVICES — Horizontal editorial rows
+═══════════════════════════════════════ */
+#servicos {
+  padding: 140px 0;
+  background: var(--wh);
+}
+.services-header {
+  margin-bottom: 60px;
+}
+.services-header .tag { margin-bottom: 12px; }
+.services-body {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 56px;
+  align-items: start;
+}
+.services-header-title {
+  font-family: var(--serif); font-size: clamp(2.4rem,4vw,4rem);
+  font-weight: 300; color: var(--g); line-height: 1.1;
+}
+.services-header-title em { font-style: italic; color: var(--gs); }
+.services-header-right {
+  font-family: var(--sans); font-size: .72rem;
+  color: var(--gs); line-height: 1.8; max-width: 280px; flex-shrink: 0;
+}
+.services-header-video {
+  position: sticky; top: 100px;
+  width: 100%;
+  border-radius: var(--r);
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,.08);
+}
+.services-header-video video {
+  width: 100%; height: auto; display: block;
+}
+.video-sound-btn {
+  position: absolute; bottom: 14%; right: 10%;
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid rgba(41,63,43,.2);
+  background: rgba(247,240,230,.75);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--g2); transition: all .2s; z-index: 2; padding: 0;
+}
+.video-sound-btn:hover { background: rgba(247,240,230,1); border-color: rgba(41,63,43,.5); }
+.video-sound-btn svg { width: 13px; height: 13px; }
+.video-sound-btn .icon-sound { display: none; }
+.video-sound-btn.is-muted .icon-muted { display: block; }
+.video-sound-btn.is-muted .icon-sound { display: none; }
+.video-sound-btn:not(.is-muted) .icon-muted { display: none; }
+.video-sound-btn:not(.is-muted) .icon-sound { display: block; }
+.service-rows { display: flex; flex-direction: column; gap: 0; }
+.service-row {
+  display: grid; grid-template-columns: 80px 1fr auto;
+  align-items: center; gap: 40px;
+  padding: 36px 0; border-top: 1px solid var(--cvd);
+  transition: background .3s; cursor: default; position: relative;
+}
+.service-row:last-child { border-bottom: 1px solid var(--cvd); }
+.service-row::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--cv); opacity: 0; transition: opacity .3s;
+  margin: 0 -48px; z-index: 0;
+}
+.service-row:hover::before { opacity: 1; }
+.srow-num {
+  font-family: var(--serif); font-size: 3.2rem; font-weight: 300;
+  color: rgba(107,124,95,.15); line-height: 1; position: relative; z-index: 1;
+  transition: color .3s;
+}
+.service-row:hover .srow-num { color: rgba(201,168,76,.35); }
+.srow-body { position: relative; z-index: 1; }
+.srow-title {
+  font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+  color: var(--g); margin-bottom: 6px;
+  transition: color .3s;
+}
+.service-row:hover .srow-title { color: var(--g); }
+.srow-desc {
+  font-family: var(--sans); font-size: .7rem;
+  color: var(--gs); line-height: 1.7;
+}
+.srow-icon {
+  position: relative; z-index: 1;
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 1px solid var(--cvd); display: flex; align-items: center; justify-content: center;
+  color: var(--gs); transition: all .3s; flex-shrink: 0;
+}
+.service-row:hover .srow-icon {
+  border-color: var(--au); color: var(--au);
+  background: rgba(201,168,76,.06);
+}
+.srow-icon svg { width: 22px; height: 22px; }
+
+@media (max-width: 860px) {
+  .services-body { grid-template-columns: 1fr; gap: 40px; }
+  .services-header-video { position: static; max-height: 300px; overflow: hidden; }
+  .services-header-video video { height: 300px; width: 100%; object-fit: cover; }
+  .service-row { grid-template-columns: 48px 1fr; gap: 20px; }
+  .srow-icon { display: none; }
+  .service-row::before { margin: 0 -24px; }
+}
+@media (max-width: 560px) {
+  .srow-num { font-size: 2rem; }
+}
+
+/* ═══════════════════════════════════════
+   WHY CHOOSE US — Dark section with cards
+═══════════════════════════════════════ */
+#experiencia {
+  padding: 140px 0;
+  background: rgba(26,46,28,.38);
+  position: relative; overflow: hidden;
+}
+#experiencia::before {
+  content: '';
+  position: absolute; inset: -8%;
+  background: url("fundo salao.png") center / cover no-repeat;
+  z-index: 0;
+  animation: exp-bg-drift 30s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes exp-bg-drift {
+  0%   { transform: scale(1)    translate(0,    0);    }
+  33%  { transform: scale(1.04) translate(-1.5%, 1%);  }
+  66%  { transform: scale(1.07) translate(1%,  -1.5%); }
+  100% { transform: scale(1.04) translate(-0.5%, 2%);  }
+}
+#experiencia::after {
+  content: '';
+  position: absolute; bottom: -100px; right: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(107,124,95,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.exp-header { text-align: center; margin-bottom: 72px; position: relative; z-index: 1; }
+.exp-header .tag { justify-content: center; }
+.exp-header .tag::before { display: none; }
+.exp-header h2 {
+  font-family: var(--serif); font-size: clamp(2.4rem,4vw,4rem);
+  font-weight: 300; color: var(--cr); line-height: 1.1;
+}
+.exp-header h2 em { font-style: italic; color: var(--aul); }
+.exp-cards {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 2px;
+  position: relative; z-index: 1;
+}
+.exp-card {
+  background: rgba(26,46,28,.65);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(201,168,76,.12);
+  padding: 44px 32px; position: relative; overflow: hidden;
+  transition: all .4s;
+}
+.exp-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--au), transparent);
+  opacity: 0; transition: opacity .4s;
+}
+.exp-card:hover {
+  background: rgba(26,46,28,.8); transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.3);
+  border-color: rgba(201,168,76,.2);
+  z-index: 1;
+}
+.exp-card:hover::after { opacity: 1; }
+.ec-idx {
+  font-family: var(--serif); font-size: 3.5rem; font-weight: 300;
+  color: rgba(201,168,76,.1); line-height: 1; margin-bottom: -12px;
+  transition: color .4s;
+}
+.exp-card:hover .ec-idx { color: rgba(201,168,76,.2); }
+.ec-icon {
+  width: 48px; height: 48px; margin-bottom: 20px;
+  border: 1px solid rgba(201,168,76,.15); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--au); position: relative; z-index: 1;
+}
+.ec-icon svg { width: 20px; height: 20px; }
+.ec-title {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 400;
+  color: var(--cr); margin-bottom: 12px; position: relative; z-index: 1;
+}
+.ec-body {
+  font-family: var(--sans); font-size: .68rem; line-height: 1.85;
+  color: rgba(200,184,154,.55); position: relative; z-index: 1;
+}
+@media (max-width: 860px) { .exp-cards { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .exp-cards { grid-template-columns: 1fr; } .exp-card { padding: 32px 24px; } }
+
+/* ═══════════════════════════════════════
+   TESTIMONIALS — Mosaic grid
+═══════════════════════════════════════ */
+#testemunhos {
+  padding: 140px 0;
+  background: var(--cv);
+}
+.testi-header { text-align: center; margin-bottom: 72px; }
+.testi-header .tag { justify-content: center; }
+.testi-header .tag::before { display: none; }
+.testi-header h2 {
+  font-family: var(--serif); font-size: clamp(2.4rem,4vw,4rem);
+  font-weight: 300; color: var(--g); line-height: 1.1;
+}
+.testi-header h2 em { font-style: italic; color: var(--gs); }
+.testi-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+.testi-card {
+  background: var(--wh); border-radius: var(--r);
+  padding: 36px; position: relative; overflow: hidden;
+  transition: all .4s; border: 1px solid transparent;
+}
+.testi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(41,63,43,.1);
+  border-color: rgba(201,168,76,.2);
+}
+/* First card spans 2 rows */
+.testi-card:first-child {
+  grid-row: 1 / 3;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.tc-quote-mark {
+  font-family: var(--serif); font-size: 5rem; line-height: .7;
+  color: var(--au); opacity: .3; user-select: none;
+  margin-bottom: 16px;
+}
+.tc-stars { color: var(--au); font-size: .85rem; letter-spacing: 2px; margin-bottom: 16px; }
+.tc-text {
+  font-family: var(--serif); font-size: 1.1rem; font-style: italic;
+  color: var(--txm); line-height: 1.75; flex: 1;
+}
+.testi-card:first-child .tc-text { font-size: 1.25rem; }
+.tc-author {
+  font-family: var(--sans); font-size: .58rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gs); margin-top: 24px; padding-top: 24px;
+  border-top: 1px solid var(--cvd);
+}
+
+@media (max-width: 860px) {
+  .testi-mosaic { grid-template-columns: 1fr 1fr; }
+  .testi-card:first-child { grid-row: auto; }
+}
+@media (max-width: 560px) {
+  .testi-mosaic { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════
+   CTA BANNER
+═══════════════════════════════════════ */
+#cta-banner {
+  position: relative; overflow: hidden;
+  padding: 120px 0;
+  background: linear-gradient(135deg, var(--g2) 0%, var(--g) 60%, #3A5C3C 100%);
+  text-align: center;
+}
+#cta-banner::before {
+  content: '';
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(201,168,76,.06) 0%, transparent 70%);
+}
+.cta-banner-ornament {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; margin-bottom: 36px;
+}
+.cta-ornament-line { width: 80px; height: 1px; background: rgba(201,168,76,.3); }
+.cta-ornament-diamond {
+  width: 8px; height: 8px; background: var(--au);
+  transform: rotate(45deg); opacity: .6;
+}
+#cta-banner h2 {
+  font-family: var(--serif); font-size: clamp(2.2rem,4.5vw,4.2rem);
+  font-weight: 300; color: var(--cr); line-height: 1.15;
+  margin-bottom: 16px; position: relative; z-index: 1;
+}
+#cta-banner h2 em { font-style: italic; color: var(--aul); }
+#cta-banner p {
+  font-family: var(--sans); font-size: .76rem;
+  color: rgba(200,184,154,.6); margin-bottom: 52px;
+  letter-spacing: .05em; position: relative; z-index: 1;
+}
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: .65rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; text-decoration: none;
+  padding: 15px 36px; border-radius: 2px;
+  background: #25D366; color: #fff; border: 1.5px solid #25D366;
+  cursor: pointer; transition: all .3s;
+}
+.btn-whatsapp:hover { background: #22C35D; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,.3); }
+.btn-whatsapp svg { width: 16px; height: 16px; }
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+#contacto {
+  padding: 140px 0;
+  background: var(--wh);
+}
+.contact-layout {
+  display: grid; grid-template-columns: 5fr 7fr;
+  gap: 80px; align-items: start;
+}
+.contact-left .tag { margin-bottom: 12px; }
+.contact-left h2 {
+  font-family: var(--serif); font-size: clamp(2.2rem,3vw,3.2rem);
+  font-weight: 300; color: var(--g); margin-bottom: 48px;
+  line-height: 1.2;
+}
+.cinfo {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 24px 0; border-bottom: 1px solid var(--cvd);
+}
+.cinfo:first-of-type { border-top: 1px solid var(--cvd); }
+.cinfo-icon {
+  width: 38px; height: 38px; min-width: 38px;
+  border-radius: 50%; background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.15);
+  display: flex; align-items: center; justify-content: center; margin-top: 2px;
+}
+.cinfo-icon svg { width: 15px; height: 15px; color: var(--au); }
+.cinfo-label {
+  font-family: var(--sans); font-size: .55rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--gs);
+  margin-bottom: 5px;
+}
+.cinfo-val, .cinfo-val a {
+  font-family: var(--sans); font-size: .78rem;
+  color: var(--txm); line-height: 1.65; text-decoration: none;
+  transition: color .3s;
+}
+.cinfo-val a:hover { color: var(--g); }
+.hours-grid { display: flex; flex-direction: column; gap: 4px; }
+.hours-row {
+  display: flex; justify-content: space-between;
+  font-family: var(--sans); font-size: .72rem; gap: 12px;
+}
+.hours-row.closed { opacity: .35; }
+.hours-time { font-weight: 500; color: var(--gs); }
+.map-col { position: relative; }
+.map-wrap {
+  border-radius: var(--rL); overflow: hidden;
+  border: 1px solid var(--cvd);
+  box-shadow: 0 20px 60px rgba(41,63,43,.08);
+  height: 520px;
+}
+.map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+@media (max-width: 860px) {
+  .contact-layout { grid-template-columns: 1fr; }
+  .map-wrap { height: 360px; border-radius: var(--r); }
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer {
+  background: var(--g2);
+  padding: 72px 0 36px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px; padding-bottom: 56px;
+  border-bottom: 1px solid rgba(247,240,230,.07);
+  margin-bottom: 36px;
+}
+.footer-brand img { height: 40px; display: block; margin-bottom: 16px; }
+.footer-tagline {
+  font-family: var(--serif); font-size: .95rem; font-style: italic;
+  color: rgba(200,184,154,.4); margin-bottom: 28px;
+}
+.footer-socials { display: flex; gap: 10px; }
+.footer-social-link {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(247,240,230,.1);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(247,240,230,.4); text-decoration: none;
+  transition: all .3s;
+}
+.footer-social-link:hover { border-color: var(--au); color: var(--au); background: rgba(201,168,76,.07); }
+.footer-social-link svg { width: 15px; height: 15px; }
+.footer-col h5 {
+  font-family: var(--sans); font-size: .55rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(200,184,154,.3); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer-col ul a {
+  font-family: var(--sans); font-size: .7rem;
+  color: rgba(247,240,230,.45); text-decoration: none; transition: color .3s;
+}
+.footer-col ul a:hover { color: var(--aul); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-family: var(--sans); font-size: .6rem; color: rgba(200,184,154,.25); letter-spacing: .05em; }
+@media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; gap: 36px; } }
+
+/* ═══════════════════════════════════════
+   WHATSAPP FLOAT
+═══════════════════════════════════════ */
+.wa-float {
+  position: fixed; bottom: 32px; right: 32px; z-index: 800;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(37,211,102,.4); text-decoration: none;
+  transition: all .3s; animation: wa-breathe 3s ease-in-out infinite;
+}
+.wa-float:hover { transform: scale(1.1); animation: none; box-shadow: 0 12px 40px rgba(37,211,102,.55); }
+.wa-float svg { width: 26px; height: 26px; }
+@keyframes wa-breathe {
+  0%,100% { box-shadow: 0 8px 28px rgba(37,211,102,.4); }
+  50% { box-shadow: 0 8px 36px rgba(37,211,102,.6), 0 0 0 8px rgba(37,211,102,.07); }
+}
+
+/* ═══════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════ */
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ═══════════════════════════════════════
+   MOBILE — Global fixes ≤ 768px
+═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  #sobre, #servicos, #experiencia, #testemunhos, #cta-banner, #contacto {
+    padding: 80px 0;
+  }
+  .exp-header { margin-bottom: 48px; }
+  .testi-header { margin-bottom: 48px; }
+  .services-header { margin-bottom: 40px; }
+  .about-photo-pill { left: 8px; top: 24px; font-size: .5rem; padding: 8px 14px; }
+  .about-photo-tag { right: 8px; bottom: -12px; padding: 14px 18px; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  #sobre, #servicos, #experiencia, #testemunhos, #cta-banner, #contacto {
+    padding: 60px 0;
+  }
+  .services-header-title { font-size: 2.2rem; }
+  .about-eyebrow { font-size: 2rem; }
+  .hero-title { font-size: 2.2rem; }
+  .stat-value { font-size: 2.4rem; }
+  .exp-card { padding: 28px 20px; }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .grain-overlay { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Grain -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ════════════════ NAV ════════════════ -->
+<nav id="nav" role="navigation" aria-label="Navegação principal">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="NOBRES — início">
+      <img src="logoNobre.png" alt="NOBRES Estética Avançada">
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#experiencia">Experiência</a></li>
+      <li><a href="#testemunhos">Testemunhos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://wa.me/351911759108" class="btn btn-gold" target="_blank" rel="noopener">Agendar</a>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Full-screen overlay menu -->
+<div class="overlay-menu" id="overlayMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <ul>
+    <li><a href="#sobre" class="overlay-link">Sobre</a></li>
+    <li><a href="#servicos" class="overlay-link">Serviços</a></li>
+    <li><a href="#experiencia" class="overlay-link">Experiência</a></li>
+    <li><a href="#testemunhos" class="overlay-link">Testemunhos</a></li>
+    <li><a href="#contacto" class="overlay-link">Contacto</a></li>
+  </ul>
+  <div class="overlay-contact">
+    <a href="https://wa.me/351911759108" target="_blank" rel="noopener">+351 911 759 108</a>
+  </div>
+</div>
+
+<!-- ════════════════ HERO ════════════════ -->
+<section id="hero" aria-label="Apresentação">
+
+  <div class="hero-left">
+    <div class="hero-num" aria-hidden="true">N</div>
+    <div class="hero-kicker" aria-hidden="true">
+      <span class="hero-kicker-line"></span>
+      Estética Avançada
+    </div>
+    <h1 class="hero-title">
+      Arte &amp; Ciência<br>ao Serviço<br>da sua <em>Beleza</em>
+    </h1>
+    <p class="hero-subtitle">
+      Tratamentos estéticos de excelência com tecnologia de ponta e uma abordagem profundamente personalizada, em Valbom, Gondomar.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/351911759108" class="btn btn-gold" target="_blank" rel="noopener">Agendar Agora</a>
+      <a href="#servicos" class="btn-ghost-light">Ver Serviços</a>
+    </div>
+  </div>
+
+  <div class="hero-video-col">
+    <video class="hero-bg-video" autoplay loop muted playsinline>
+      <source src="videohero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="hero-scroll-bar"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════ MARQUEE ════════════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <!-- Items duplicated in JS -->
+    <div class="marquee-item">Tratamentos Faciais <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Massagens Corporais <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Depilação Threading <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Maquilhagem Profissional <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Protocolos Premium <span class="marquee-dot"></span></div>
+    <div class="marquee-item">★ 5.0 Google <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Valbom · Gondomar <span class="marquee-dot"></span></div>
+    <!-- duplicated for seamless loop -->
+    <div class="marquee-item">Tratamentos Faciais <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Massagens Corporais <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Depilação Threading <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Maquilhagem Profissional <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Protocolos Premium <span class="marquee-dot"></span></div>
+    <div class="marquee-item">★ 5.0 Google <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Valbom · Gondomar <span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- ════════════════ STATS ════════════════ -->
+
+<!-- ════════════════ ABOUT ════════════════ -->
+<section id="sobre" aria-label="Sobre a Viviane">
+  <div class="container">
+    <div class="about-layout">
+
+      <div class="about-photo-col reveal">
+        <div class="about-photo-pill">Excelência Certificada</div>
+        <div class="about-photo-frame">
+          <img src="owner1.jpg" alt="Viviane — NOBRES Estética Avançada" loading="lazy">
+        </div>
+        <div class="about-photo-tag">
+          <div class="num">★★★★★</div>
+          <div class="lbl">5 Estrelas Google</div>
+        </div>
+      </div>
+
+      <div class="about-text-col">
+        <div class="tag reveal">A Nossa História</div>
+        <h2 class="about-eyebrow reveal reveal-d1">
+          Conheça<br>a <em>Viviane</em>
+        </h2>
+        <blockquote class="about-pull-quote reveal reveal-d1">
+          "Cada tratamento é uma experiência única —<br>desenhada especialmente para si."
+        </blockquote>
+        <p class="about-body reveal reveal-d2">
+          A NOBRES Estética Avançada nasceu da paixão de Viviane pela arte da estética e pelo bem-estar humano. Reconhecida pela sua excelência técnica e acolhimento genuíno, cada sessão é pensada ao detalhe — combinando as mais recentes tecnologias com o toque inconfundível de quem verdadeiramente se importa.
+        </p>
+        <div class="about-values reveal reveal-d3">
+          <div class="value-row">
+            <span class="value-idx">01</span>
+            <div>
+              <h4>Tecnologia Avançada</h4>
+              <p>Equipamentos e técnicas de última geração para resultados visíveis e duradouros</p>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="value-idx">02</span>
+            <div>
+              <h4>Personalização Total</h4>
+              <p>Cada tratamento adaptado às necessidades únicas e objetivos de cada cliente</p>
+            </div>
+          </div>
+          <div class="value-row">
+            <span class="value-idx">03</span>
+            <div>
+              <h4>Resultados Comprovados</h4>
+              <p>Metodologia baseada em evidência com protocolos avançados e transformações reais</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ SERVICES ════════════════ -->
+<section id="servicos" aria-label="Serviços">
+  <div class="container">
+    <div class="services-header">
+      <div class="tag reveal">O Que Oferecemos</div>
+      <h2 class="services-header-title reveal reveal-d1">
+        Os Nossos<br><em>Serviços</em>
+      </h2>
+    </div>
+
+    <div class="services-body">
+    <div class="service-rows" role="list">
+
+      <div class="service-row reveal" role="listitem">
+        <div class="srow-num" aria-hidden="true">01</div>
+        <div class="srow-body">
+          <h3 class="srow-title">Tratamentos Faciais</h3>
+          <p class="srow-desc">Limpeza profunda, hidratação intensiva, tratamento anti-idade, peeling e tratamento de manchas e acne</p>
+        </div>
+        <div class="srow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal reveal-d1" role="listitem">
+        <div class="srow-num" aria-hidden="true">02</div>
+        <div class="srow-body">
+          <h3 class="srow-title">Massagens Corporais</h3>
+          <p class="srow-desc">Relaxante, terapêutica, drenagem linfática manual e massagem modeladora corporal</p>
+        </div>
+        <div class="srow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal reveal-d2" role="listitem">
+        <div class="srow-num" aria-hidden="true">03</div>
+        <div class="srow-body">
+          <h3 class="srow-title">Depilação</h3>
+          <p class="srow-desc">Técnica de linha (threading) para precisão incomparável — depilação facial e corporal com o máximo conforto</p>
+        </div>
+        <div class="srow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal reveal-d1" role="listitem">
+        <div class="srow-num" aria-hidden="true">04</div>
+        <div class="srow-body">
+          <h3 class="srow-title">Maquilhagem</h3>
+          <p class="srow-desc">Profissional para ocasiões especiais, noivas e eventos — inclui aulas personalizadas de automaquilhagem</p>
+        </div>
+        <div class="srow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal reveal-d2" role="listitem">
+        <div class="srow-num" aria-hidden="true">05</div>
+        <div class="srow-body">
+          <h3 class="srow-title">Protocolos Premium</h3>
+          <p class="srow-desc">Tratamentos exclusivos combinados face + corpo, experiências holísticas de bem-estar e protocolos personalizados</p>
+        </div>
+        <div class="srow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5z"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="services-header-video reveal reveal-d2">
+        <video id="servicos-video" src="Servi%C3%A7o.mp4" autoplay loop muted playsinline></video>
+        <button class="video-sound-btn is-muted" id="servicos-sound-btn" aria-label="Ativar som">
+          <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+          <svg class="icon-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ WHY CHOOSE ════════════════ -->
+<section id="experiencia" aria-label="A Experiência NOBRES">
+  <div class="container">
+    <div class="exp-header">
+      <div class="tag reveal">Porque Escolher-nos</div>
+      <h2 class="reveal reveal-d1">A Experiência<br><em>NOBRES</em></h2>
+    </div>
+    <div class="exp-cards">
+      <div class="exp-card reveal">
+        <div class="ec-idx" aria-hidden="true">01</div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+          </svg>
+        </div>
+        <h3 class="ec-title">Excelência Técnica</h3>
+        <p class="ec-body">Formação contínua e certificações garantem os mais altos padrões de qualidade em cada sessão</p>
+      </div>
+      <div class="exp-card reveal reveal-d1">
+        <div class="ec-idx" aria-hidden="true">02</div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75"/>
+          </svg>
+        </div>
+        <h3 class="ec-title">Espaço Acolhedor</h3>
+        <p class="ec-body">Um ambiente cuidadosamente desenhado para proporcionar relaxamento e conforto total</p>
+      </div>
+      <div class="exp-card reveal reveal-d2">
+        <div class="ec-idx" aria-hidden="true">03</div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304-.001a3.75 3.75 0 010 5.304m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546"/>
+          </svg>
+        </div>
+        <h3 class="ec-title">Tecnologia Premium</h3>
+        <p class="ec-body">Equipamentos de última geração e produtos de alta performance para resultados visíveis</p>
+      </div>
+      <div class="exp-card reveal reveal-d3">
+        <div class="ec-idx" aria-hidden="true">04</div>
+        <div class="ec-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/>
+          </svg>
+        </div>
+        <h3 class="ec-title">Atenção Personalizada</h3>
+        <p class="ec-body">Cada cliente recebe um plano único, adaptado às suas necessidades específicas e objetivos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ TESTIMONIALS ════════════════ -->
+<section id="testemunhos" aria-label="Testemunhos">
+  <div class="container">
+    <div class="testi-header">
+      <div class="tag reveal">Testemunhos</div>
+      <h2 class="reveal reveal-d1">O Que Dizem<br><em>as Nossas Clientes</em></h2>
+    </div>
+    <div class="testi-mosaic" role="list">
+
+      <article class="testi-card reveal" role="listitem">
+        <div class="tc-quote-mark" aria-hidden="true">"</div>
+        <div class="tc-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="tc-text">"Viviane é excepcionalmente maravilhosa, tive o privilégio de conhecer esta profissional e experimentar um serviço único, exclusivo, que nunca encontrei em lugar algum!"</p>
+        <div class="tc-author">Cliente Verificado · Google</div>
+      </article>
+
+      <article class="testi-card reveal reveal-d1" role="listitem">
+        <div class="tc-quote-mark" aria-hidden="true">"</div>
+        <div class="tc-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="tc-text">"Passei a manhã com a Viviane e saí de lá a flutuar. Massagem de corpo inteiro e tratamento facial que deixou a minha pele hidratada e bonita!"</p>
+        <div class="tc-author">Cliente Verificado · Google</div>
+      </article>
+
+      <article class="testi-card reveal reveal-d2" role="listitem">
+        <div class="tc-quote-mark" aria-hidden="true">"</div>
+        <div class="tc-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="tc-text">"A Viviane é uma excelente profissional. Não abdico dos serviços e do bem estar que proporciona."</p>
+        <div class="tc-author">Cliente Verificado · Google</div>
+      </article>
+
+      <article class="testi-card reveal reveal-d1" role="listitem">
+        <div class="tc-quote-mark" aria-hidden="true">"</div>
+        <div class="tc-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="tc-text">"Excelente acompanhamento. Tratamentos em gabinete com impacto na saúde e no bem estar. Muito honesta, recebe os seus clientes com muito carinho."</p>
+        <div class="tc-author">Cliente Verificado · Google</div>
+      </article>
+
+      <article class="testi-card reveal reveal-d2" role="listitem">
+        <div class="tc-quote-mark" aria-hidden="true">"</div>
+        <div class="tc-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="tc-text">"Espaço muito especial. A Viviane é uma excelente profissional e uma pessoa muito especial. Aconselho vivamente a experimentar os serviços prestados neste espaço."</p>
+        <div class="tc-author">Cliente Verificado · Google</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ CTA BANNER ════════════════ -->
+<section id="cta-banner" aria-label="Chamada para agendamento">
+  <div class="container">
+    <div class="cta-banner-ornament" aria-hidden="true">
+      <div class="cta-ornament-line"></div>
+      <div class="cta-ornament-diamond"></div>
+      <div class="cta-ornament-line"></div>
+    </div>
+    <h2 class="reveal">Pronta para a sua<br>experiência <em>NOBRES</em>?</h2>
+    <p class="reveal reveal-d1">Agende agora e deixe-nos cuidar de si</p>
+    <div class="cta-actions reveal reveal-d2">
+      <a href="https://wa.me/351911759108" class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp · +351 911 759 108
+      </a>
+      <a href="tel:+351911759108" class="btn btn-solid" style="border-color:rgba(247,240,230,.2);background:transparent;color:var(--cr);">Ligar Agora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ CONTACT ════════════════ -->
+<section id="contacto" aria-label="Contacto e localização">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <div class="tag reveal">Encontre-nos</div>
+        <h2 class="reveal reveal-d1">Contacto &amp;<br>Localização</h2>
+
+        <div class="cinfo reveal reveal-d2">
+          <div class="cinfo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Morada</div>
+            <div class="cinfo-val">R. Particular Nuno Álvares, 73<br>4420-527 Valbom, Gondomar<br>Porto, Portugal</div>
+          </div>
+        </div>
+
+        <div class="cinfo reveal reveal-d2">
+          <div class="cinfo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Telefone / WhatsApp</div>
+            <div class="cinfo-val"><a href="tel:+351911759108">+351 911 759 108</a></div>
+          </div>
+        </div>
+
+        <div class="cinfo reveal reveal-d2">
+          <div class="cinfo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Horário de Funcionamento</div>
+            <div class="cinfo-val">
+              <div class="hours-grid">
+                <div class="hours-row closed"><span>Segunda</span><span class="hours-time">Encerrado</span></div>
+                <div class="hours-row"><span>Terça – Sexta</span><span class="hours-time">09h30 – 19h00</span></div>
+                <div class="hours-row"><span>Sábado</span><span class="hours-time">08h30 – 14h00</span></div>
+                <div class="hours-row closed"><span>Domingo</span><span class="hours-time">Encerrado</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cinfo reveal reveal-d3">
+          <div class="cinfo-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="cinfo-label">Instagram</div>
+            <div class="cinfo-val"><a href="https://www.instagram.com/nobresea_com/" target="_blank" rel="noopener">@nobresea_com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-col reveal reveal-d2">
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3003.8!2d-8.558!3d41.148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Particular+Nuno+%C3%81lvares+73%2C+4420-527+Valbom%2C+Gondomar!5e0!3m2!1spt!2spt!4v1"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="NOBRES Estética Avançada — Localização em Valbom, Gondomar">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logoNobre.png" alt="NOBRES Estética Avançada">
+        <p class="footer-tagline">Beleza. Bem-estar. Excelência.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nobresea_com/" class="footer-social-link" target="_blank" rel="noopener" aria-label="Instagram @nobresea_com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/351911759108" class="footer-social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#experiencia">Experiência</a></li>
+          <li><a href="#testemunhos">Testemunhos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Serviços</h5>
+        <ul>
+          <li><a href="#servicos">Tratamentos Faciais</a></li>
+          <li><a href="#servicos">Massagens Corporais</a></li>
+          <li><a href="#servicos">Depilação</a></li>
+          <li><a href="#servicos">Maquilhagem</a></li>
+          <li><a href="#servicos">Protocolos Premium</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 NOBRES Estética Avançada. Todos os direitos reservados.</p>
+      <p class="footer-copy">Valbom · Gondomar · Porto · Portugal</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/351911759108" class="wa-float" target="_blank" rel="noopener" aria-label="Contactar pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+// ─── CURSOR ───
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animCursor() {
+  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+  rx += (mx - rx) * .12; ry += (my - ry) * .12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animCursor);
+}
+animCursor();
+
+// ─── NAV SCROLL ───
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), { passive: true });
+
+// ─── HAMBURGER / OVERLAY ───
+const btn  = document.getElementById('hamburger');
+const menu = document.getElementById('overlayMenu');
+btn.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+document.querySelectorAll('.overlay-link').forEach(a => {
+  a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    btn.focus();
+  }
+});
+
+// ─── INTERSECTION OBSERVER (reveal) ───
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ─── STAGGERED OVERLAY MENU ANIMATION ───
+// (handled via CSS transition-delay on li a)
+
+// ─── SERVICES VIDEO SOUND TOGGLE ───
+const servicosVideo = document.getElementById('servicos-video');
+const soundBtn = document.getElementById('servicos-sound-btn');
+if (servicosVideo && soundBtn) {
+  soundBtn.addEventListener('click', () => {
+    servicosVideo.muted = !servicosVideo.muted;
+    soundBtn.classList.toggle('is-muted', servicosVideo.muted);
+    soundBtn.setAttribute('aria-label', servicosVideo.muted ? 'Ativar som' : 'Silenciar');
+  });
+}
+
+// ─── SMOOTH SCROLL for nav links ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
