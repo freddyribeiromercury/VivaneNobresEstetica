@@ -251,6 +251,10 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
   width: 100%; height: 100%;
   object-fit: cover; z-index: 0; pointer-events: none;
 }
+.hero-bg-video::-webkit-media-controls,
+.hero-bg-video::-webkit-media-controls-panel,
+.hero-bg-video::-webkit-media-controls-play-button,
+.hero-bg-video::-webkit-media-controls-start-playback-button { display: none !important; }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(to right, var(--gs) 0%, transparent 22%);
@@ -1099,7 +1103,7 @@ footer {
   </div>
 
   <div class="hero-video-col">
-    <video class="hero-bg-video" id="heroBgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
+    <video class="hero-bg-video" id="heroBgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" disableremoteplayback x-webkit-airplay="deny">
       <source src="videohero.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -1600,12 +1604,19 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 const heroBgVideo = document.getElementById('heroBgVideo');
 if (heroBgVideo) {
   heroBgVideo.muted = true;
-  const playPromise = heroBgVideo.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(() => {
-      document.addEventListener('touchstart', () => heroBgVideo.play(), { once: true });
-    });
-  }
+  heroBgVideo.defaultMuted = true;
+  heroBgVideo.setAttribute('muted', '');
+  heroBgVideo.setAttribute('playsinline', '');
+
+  const tryPlay = () => { if (heroBgVideo.paused) heroBgVideo.play().catch(() => {}); };
+
+  heroBgVideo.addEventListener('loadedmetadata', tryPlay);
+  heroBgVideo.addEventListener('canplay', tryPlay);
+  heroBgVideo.addEventListener('loadeddata', tryPlay);
+  window.addEventListener('load', tryPlay);
+  ['touchstart','touchend','scroll','click'].forEach(ev =>
+    document.addEventListener(ev, tryPlay, { once: true, passive: true })
+  );
 }
 
 // ─── SERVICES VIDEO SOUND TOGGLE ───
