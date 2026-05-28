@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6a7564">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>NOBRES Estética Avançada — Valbom, Gondomar</title>
 <meta name="description" content="NOBRES Estética Avançada — Tratamentos estéticos avançados com tecnologia de ponta em Valbom, Gondomar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1096,7 +1099,7 @@ footer {
   </div>
 
   <div class="hero-video-col">
-    <video class="hero-bg-video" autoplay loop muted playsinline>
+    <video class="hero-bg-video" id="heroBgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
       <source src="videohero.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay" aria-hidden="true"></div>
@@ -1592,6 +1595,18 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // ─── STAGGERED OVERLAY MENU ANIMATION ───
 // (handled via CSS transition-delay on li a)
+
+// ─── HERO VIDEO AUTOPLAY (iOS fallback) ───
+const heroBgVideo = document.getElementById('heroBgVideo');
+if (heroBgVideo) {
+  heroBgVideo.muted = true;
+  const playPromise = heroBgVideo.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      document.addEventListener('touchstart', () => heroBgVideo.play(), { once: true });
+    });
+  }
+}
 
 // ─── SERVICES VIDEO SOUND TOGGLE ───
 const servicosVideo = document.getElementById('servicos-video');
