@@ -245,12 +245,11 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 #hero {
   position: relative; min-height: 100vh;
   overflow: hidden;
-  display: grid; grid-template-columns: 3fr 7fr;
+  display: grid; grid-template-columns: 6fr 4fr;
   background: var(--gs);
 }
 .hero-video-col {
   position: relative; overflow: hidden;
-  order: 1;
 }
 .hero-bg-video {
   position: absolute; inset: 0;
@@ -275,7 +274,7 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(to right, transparent 55%, var(--gs) 98%);
+  background: linear-gradient(to left, transparent 55%, var(--gs) 98%);
   pointer-events: none;
 }
 
@@ -283,9 +282,8 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 .hero-left {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 120px 80px 80px 48px;
+  padding: 120px 48px 80px 80px;
   background: var(--gs);
-  order: 2;
 }
 .hero-num {
   font-family: var(--serif); font-size: clamp(16rem,22vw,26rem);
