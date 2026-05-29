@@ -411,7 +411,7 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
   .hero-actions {
     position: absolute;
     bottom: 36px; left: 28px; right: 28px;
-    z-index: 20;
+    z-index: 50;
     margin-top: 0;
     flex-direction: column;
     align-items: flex-start;
@@ -426,6 +426,7 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
   .hero-video-col {
     order: 2;
     height: 100%;
+    isolation: isolate;
   }
   .hero-bg-video { object-position: center center; }
   .hero-overlay {
