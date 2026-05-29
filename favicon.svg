@@ -2,5 +2,5 @@
   <!-- Background -->
   <rect width="32" height="32" rx="7" fill="#6a7564"/>
   <!-- Lettermark N — bold serif stroke -->
-  <path d="M6,6 L6,26 L10,26 L10,13.5 L21,26 L26,26 L26,6 L22,6 L22,18.5 L11,6 Z" fill="#C9A84C"/>
+  <path d="M6,6 L6,26 L10,26 L10,13.5 L21,26 L26,26 L26,6 L22,6 L22,18.5 L11,6 Z" fill="#FFFFFF"/>
 </svg>
