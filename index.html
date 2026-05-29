@@ -324,6 +324,30 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
   animation: h-rise .8s .48s ease both;
 }
 .hero-badge .stars { color: var(--au); letter-spacing: 2px; }
+.hero-logo {
+  position: absolute; top: 88px; left: 80px;
+  animation: h-rise .8s ease both;
+}
+.hero-logo img { height: 56px; width: auto; display: block; }
+.hero-socials {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 32px;
+  animation: h-rise .8s .52s ease both;
+}
+.hero-social-link {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(247,240,230,.22);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(247,240,230,.6); text-decoration: none;
+  transition: border-color .3s, color .3s, background .3s;
+}
+.hero-social-link:hover { border-color: var(--au); color: var(--au); background: rgba(201,168,76,.08); }
+.hero-social-link svg { width: 15px; height: 15px; }
+@media (max-width: 900px) {
+  .hero-logo { top: 20px; left: 24px; }
+  .hero-logo img { height: 42px; }
+  .hero-socials { margin-top: 16px; }
+}
 
 /* Right column — image */
 .hero-right {
@@ -1113,6 +1137,11 @@ footer {
 
   <div class="hero-left">
     <div class="hero-num" aria-hidden="true">N</div>
+
+    <div class="hero-logo">
+      <img src="logoNobre.png" alt="NOBRES Estética Avançada">
+    </div>
+
     <div class="hero-kicker" aria-hidden="true">
       <span class="hero-kicker-line"></span>
       Estética Avançada
@@ -1126,6 +1155,21 @@ footer {
     <div class="hero-actions">
       <a href="https://wa.me/351911759108" class="btn btn-gold" target="_blank" rel="noopener">Agendar Agora</a>
       <a href="#servicos" class="btn-ghost-light">Ver Serviços</a>
+    </div>
+
+    <div class="hero-socials">
+      <a href="https://www.instagram.com/nobresea_com/" class="hero-social-link" target="_blank" rel="noopener" aria-label="Instagram @nobresea_com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/nobresea" class="hero-social-link" target="_blank" rel="noopener" aria-label="Facebook Nobres Estética">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
     </div>
   </div>
 
