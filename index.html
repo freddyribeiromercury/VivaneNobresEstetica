@@ -245,16 +245,18 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 #hero {
   position: relative; min-height: 100vh;
   overflow: hidden;
-  display: grid; grid-template-columns: 1fr 2fr;
+  display: grid; grid-template-columns: 3fr 7fr;
   background: var(--gs);
 }
 .hero-video-col {
   position: relative; overflow: hidden;
+  order: 1;
 }
 .hero-bg-video {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; z-index: 0; pointer-events: none;
+  object-fit: cover; object-position: center top;
+  z-index: 0; pointer-events: none;
 }
 .hero-bg-video::-webkit-media-controls,
 .hero-bg-video::-webkit-media-controls-panel,
@@ -273,7 +275,7 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(to right, var(--gs) 0%, transparent 22%);
+  background: linear-gradient(to right, transparent 55%, var(--gs) 98%);
   pointer-events: none;
 }
 
@@ -281,8 +283,9 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 .hero-left {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 120px 48px 80px 80px;
+  padding: 120px 80px 80px 48px;
   background: var(--gs);
+  order: 2;
 }
 .hero-num {
   font-family: var(--serif); font-size: clamp(16rem,22vw,26rem);
@@ -325,11 +328,6 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
   animation: h-rise .8s .48s ease both;
 }
 .hero-badge .stars { color: var(--au); letter-spacing: 2px; }
-.hero-logo {
-  position: absolute; top: 88px; left: 80px;
-  animation: h-rise .8s ease both;
-}
-.hero-logo img { height: 56px; width: auto; display: block; }
 .hero-socials {
   display: flex; align-items: center; gap: 10px;
   margin-top: 32px;
@@ -345,8 +343,6 @@ body:has(a:hover) .cursor-ring, body:has(button:hover) .cursor-ring {
 .hero-social-link:hover { border-color: var(--au); color: var(--au); background: rgba(201,168,76,.08); }
 .hero-social-link svg { width: 15px; height: 15px; }
 @media (max-width: 900px) {
-  .hero-logo { top: 20px; left: 24px; }
-  .hero-logo img { height: 42px; }
   .hero-socials { margin-top: 16px; }
 }
 
@@ -1145,10 +1141,6 @@ footer {
 
   <div class="hero-left">
     <div class="hero-num" aria-hidden="true">N</div>
-
-    <div class="hero-logo">
-      <img src="logoNobre.png" alt="NOBRES Estética Avançada">
-    </div>
 
     <div class="hero-kicker" aria-hidden="true">
       <span class="hero-kicker-line"></span>
